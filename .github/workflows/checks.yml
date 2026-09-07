@@ -16,9 +16,15 @@ concurrency:
 
 jobs:
   checks:
-    name: Python 3.11 checks
-    runs-on: windows-latest
+    name: Python ${{ matrix.python-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+        python-version: ["3.11.9"]
 
     defaults:
       run:
@@ -31,7 +37,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
-          python-version: "3.11.9"
+          python-version: ${{ matrix.python-version }}
           cache: pip
           cache-dependency-path: |
             requirements-dev.txt
@@ -42,6 +48,18 @@ jobs:
 
       - name: Check dependency compatibility
         run: python -m pip check
+
+      - name: Check generated corpus files are not committed
+        run: |
+          if git ls-files --error-unmatch \
+            corpus/raw \
+            corpus/extracted \
+            corpus/processed >/dev/null 2>&1
+          then
+            echo "Generated corpus files must not be committed."
+            git ls-files corpus/raw corpus/extracted corpus/processed
+            exit 1
+          fi
 
       - name: Check lint
         run: python -m ruff check --output-format=github .
