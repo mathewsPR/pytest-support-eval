@@ -51,3 +51,4 @@ artifacts/traces/
 
 # Generated PDF extraction outputs
 corpus/extracted/
+corpus/processed/
