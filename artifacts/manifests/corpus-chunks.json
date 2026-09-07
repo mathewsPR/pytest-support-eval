@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "corpus_id": "pytest-documentation",
+  "source_sha256": "015b1641be533eff8174a1a1b17663ba9178d8f5565b102a7a11becb4dd23b77",
+  "extraction_manifest_path": "artifacts/manifests/corpus-extraction.json",
+  "extraction_manifest_sha256": "eaf7bd0f9e6270bfa3fefff7aa9b9a5138f1c2a7b51a8bbc3cb0c5dd59d588eb",
+  "pages_path": "corpus/extracted/pytest-documentation/pages.jsonl",
+  "pages_sha256": "cd5f9ab24416801361e6b13775ccd08d0dcfba2cf444dffc0e4d0d7e7d1c1cc3",
+  "chunks_path": "corpus/processed/pytest-documentation/chunks.jsonl",
+  "chunks_sha256": "511555712504f0cb16791abf6aba4069eee16030f44e36edbaa168e74e15d7c7",
+  "chunking_strategy": "single-page paragraph chunks with local overlap",
+  "target_chars": 1800,
+  "overlap_chars": 250,
+  "min_chars": 350,
+  "source_page_count": 571,
+  "pages_with_chunks": 570,
+  "empty_pages": 1,
+  "chunk_count": 920,
+  "python_version": "3.11.9",
+  "script_sha256": "569e4ac3d50f6a7ba3d4d1753ee239fbae12f8f70ab12699b64d751d565ceee2",
+  "created_at_utc": "2026-09-07T11:16:35.115150+00:00",
+  "chunking_status": "completed"
+}
