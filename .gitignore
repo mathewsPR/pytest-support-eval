@@ -48,3 +48,6 @@ logs/
 artifacts/runs/
 artifacts/traces/
 *.log
+
+# Generated PDF extraction outputs
+corpus/extracted/

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "corpus_id": "pytest-documentation",
+  "source_manifest_path": "artifacts/manifests/corpus-source.json",
+  "source_manifest_sha256": "862c0e75ea1abaa72682bb3611c1cf78e5fe481313992e8282e40ed584b741c7",
+  "source_sha256": "015b1641be533eff8174a1a1b17663ba9178d8f5565b102a7a11becb4dd23b77",
+  "extractor": "pypdf",
+  "extractor_version": "6.17.0",
+  "python_version": "3.11.9",
+  "script_sha256": "770ce98578d514f0f111ee6d33835fedf91f9e67e1a1c1fa5e2d86aa4b51b3ac",
+  "extraction_options": {
+    "extraction_mode": "layout",
+    "layout_mode_space_vertically": true,
+    "layout_mode_strip_rotated": false
+  },
+  "page_number_basis": "1-based physical PDF page, including front matter",
+  "viewer_page_count": 571,
+  "parser_page_count": 571,
+  "page_record_count": 571,
+  "empty_page_numbers": [
+    2
+  ],
+  "total_characters": 1204222,
+  "pages_path": "corpus/extracted/pytest-documentation/pages.jsonl",
+  "pages_sha256": "cd5f9ab24416801361e6b13775ccd08d0dcfba2cf444dffc0e4d0d7e7d1c1cc3",
+  "review_path": "corpus/extracted/pytest-documentation/review.txt",
+  "review_sha256": "c2e53faacf1f667241f705128bea5a0be5379059616b52f05cd21ec9a3e6d4db",
+  "extracted_at_utc": "2026-09-07T10:38:50.820648+00:00",
+  "extraction_status": "completed",
+  "quality_review_status": "pending"
+}
