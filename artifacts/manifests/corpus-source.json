@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "corpus_id": "pytest-documentation",
+  "source_url": "https://media.readthedocs.org/pdf/pytest/latest/pytest.pdf",
+  "source_url_version_selector": "latest",
+  "local_path": "corpus/raw/pytest-documentation.pdf",
+  "sha256": "015b1641be533eff8174a1a1b17663ba9178d8f5565b102a7a11becb4dd23b77",
+  "size_bytes": 2286264,
+  "documentation_release": "9.2",
+  "documentation_release_basis": "User inspected PDF cover",
+  "viewer_page_count": 571,
+  "viewer_page_count_basis": "User inspected PDF viewer",
+  "parser_page_count": null,
+  "registered_at_utc": "2026-09-07T09:50:40.480789+00:00",
+  "downloaded_at_utc": null,
+  "license_verification_status": "pending",
+  "extraction_status": "not_started"
+}
