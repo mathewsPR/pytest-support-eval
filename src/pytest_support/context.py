@@ -7,6 +7,8 @@ from typing import Any
 
 from pytest_support.tools import read_test_report, search_docs
 
+DEFAULT_DOC_TEXT_CHAR_LIMIT = 1200
+
 
 def summarize_report(report: dict[str, Any]) -> str:
     """Create a compact text summary of a validated test report."""
@@ -59,12 +61,45 @@ def build_report_query(report: dict[str, Any]) -> str:
     return "pytest test report all tests passed"
 
 
+def truncate_text(text: str, *, char_limit: int) -> str:
+    """Trim text to a character budget."""
+    if char_limit < 20:
+        raise ValueError("char_limit must be at least 20")
+
+    compact = " ".join(text.split())
+
+    if len(compact) <= char_limit:
+        return compact
+
+    marker = "..."
+    return compact[: char_limit - len(marker)].rstrip() + marker
+
+
+def limit_docs(
+    docs: list[dict[str, Any]],
+    *,
+    doc_text_char_limit: int = DEFAULT_DOC_TEXT_CHAR_LIMIT,
+) -> list[dict[str, Any]]:
+    """Return docs with bounded text while preserving metadata."""
+    return [
+        {
+            **doc,
+            "text": truncate_text(
+                str(doc["text"]),
+                char_limit=doc_text_char_limit,
+            ),
+        }
+        for doc in docs
+    ]
+
+
 def build_context(
     report_id: str,
     *,
     reports_dir: Path | None = None,
     chunks_path: Path | None = None,
     top_k: int = 3,
+    doc_text_char_limit: int = DEFAULT_DOC_TEXT_CHAR_LIMIT,
 ) -> dict[str, Any]:
     """Load a report, retrieve docs, and return prompt-ready context."""
     if reports_dir is None:
@@ -83,7 +118,7 @@ def build_context(
         "report": report,
         "report_summary": summarize_report(report),
         "docs_query": query,
-        "docs": docs,
+        "docs": limit_docs(docs, doc_text_char_limit=doc_text_char_limit),
     }
 
 
