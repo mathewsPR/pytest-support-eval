@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "report_id": "run-003",
+  "synthetic": true,
+  "summary": {
+    "total": 2,
+    "passed": 1,
+    "failed": 0,
+    "errors": 1,
+    "skipped": 0
+  },
+  "tests": [
+    {
+      "nodeid": "tests/demo/test_example.py::test_addition",
+      "outcome": "passed",
+      "phase": "call",
+      "message": null
+    },
+    {
+      "nodeid": "tests/demo/test_example.py::test_client",
+      "outcome": "error",
+      "phase": "setup",
+      "message": "FixtureLookupError: fixture 'client' not found"
+    }
+  ]
+}

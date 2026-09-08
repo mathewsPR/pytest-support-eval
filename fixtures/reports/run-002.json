@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "report_id": "run-002",
+  "synthetic": true,
+  "summary": {
+    "total": 2,
+    "passed": 1,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0
+  },
+  "tests": [
+    {
+      "nodeid": "tests/demo/test_example.py::test_addition",
+      "outcome": "failed",
+      "phase": "call",
+      "message": "AssertionError: assert 4 == 5"
+    },
+    {
+      "nodeid": "tests/demo/test_example.py::test_client",
+      "outcome": "passed",
+      "phase": "call",
+      "message": null
+    }
+  ]
+}
