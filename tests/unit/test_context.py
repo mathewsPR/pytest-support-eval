@@ -7,7 +7,9 @@ from pytest_support.context import (
     build_context,
     build_report_query,
     format_context,
+    limit_docs,
     summarize_report,
+    truncate_text,
 )
 
 
@@ -203,3 +205,86 @@ def test_format_context_handles_no_docs() -> None:
     }
 
     assert "No matching documentation chunks found." in format_context(context)
+
+
+def test_truncate_text_compacts_whitespace_and_respects_limit() -> None:
+    text = "alpha\n\nbeta     gamma " * 20
+
+    truncated = truncate_text(text, char_limit=60)
+
+    assert len(truncated) <= 60
+    assert "\n" not in truncated
+    assert "  " not in truncated
+    assert truncated.endswith("...")
+
+
+def test_truncate_text_rejects_tiny_limit() -> None:
+    try:
+        truncate_text("short text", char_limit=10)
+    except ValueError as error:
+        assert "char_limit" in str(error)
+    else:
+        raise AssertionError("expected ValueError")
+
+
+def test_limit_docs_preserves_metadata_and_trims_text() -> None:
+    docs = [
+        {
+            "citation": "pytest docs p. 100",
+            "chunk_id": "pytest-documentation-p0100-c01",
+            "score": 12.345,
+            "source_page_number": 100,
+            "text": "fixture setup details " * 20,
+        }
+    ]
+
+    limited = limit_docs(docs, doc_text_char_limit=80)
+
+    assert limited[0]["citation"] == "pytest docs p. 100"
+    assert limited[0]["chunk_id"] == "pytest-documentation-p0100-c01"
+    assert limited[0]["score"] == 12.345
+    assert limited[0]["source_page_number"] == 100
+    assert len(limited[0]["text"]) <= 80
+    assert limited[0]["text"].endswith("...")
+
+
+def test_build_context_limits_retrieved_doc_text(tmp_path: Path) -> None:
+    reports_dir = tmp_path / "reports"
+    reports_dir.mkdir()
+    chunks_path = tmp_path / "chunks.jsonl"
+
+    write_json(
+        reports_dir / "run-test.json",
+        make_report(
+            "run-test",
+            [
+                {
+                    "nodeid": "tests/test_demo.py::test_client",
+                    "outcome": "error",
+                    "phase": "setup",
+                    "message": "FixtureLookupError: fixture 'client' not found",
+                }
+            ],
+        ),
+    )
+    write_jsonl(
+        chunks_path,
+        [
+            make_chunk(
+                "pytest-documentation-p0100-c01",
+                100,
+                "pytest fixtures setup lookup error " * 50,
+            )
+        ],
+    )
+
+    context = build_context(
+        "run-test",
+        reports_dir=reports_dir,
+        chunks_path=chunks_path,
+        doc_text_char_limit=90,
+    )
+
+    assert len(context["docs"][0]["text"]) <= 90
+    assert context["docs"][0]["text"].endswith("...")
+    assert context["docs"][0]["citation"] == "pytest docs p. 100"
