@@ -1,0 +1,10 @@
+{"query_id":"dev-001","query":"How do I use tmp_path to create temporary files in a test?","relevant_pages":[63],"required_terms":["tmp_path","temporary","file"],"notes":"Temporary path fixture usage."}
+{"query_id":"dev-002","query":"How can monkeypatch change environment variables during a test?","relevant_pages":[65,69],"required_terms":["monkeypatch","environment","setenv"],"notes":"Monkeypatch environment variable examples."}
+{"query_id":"dev-003","query":"How do I parametrize a test function with multiple examples?","relevant_pages":[48,493],"required_terms":["parametrize","test","examples"],"notes":"Parametrized test examples and IDs."}
+{"query_id":"dev-004","query":"How do pytest fixtures share setup between tests?","relevant_pages":[112,121],"required_terms":["fixture","setup","tests"],"notes":"Fixture setup and sharing behavior."}
+{"query_id":"dev-005","query":"How do I skip a test or mark it xfail?","relevant_pages":[511],"required_terms":["skip","xfail","mark"],"notes":"Skip and xfail marker reference."}
+{"query_id":"dev-006","query":"How does pytest discover configuration from pytest.ini?","relevant_pages":[189,190],"required_terms":["pytest.ini","configuration","rootdir"],"notes":"Configuration discovery and rootdir behavior."}
+{"query_id":"dev-007","query":"How can I capture stdout and stderr in pytest?","relevant_pages":[149,150],"required_terms":["capture","stdout","stderr"],"notes":"Output capture behavior."}
+{"query_id":"dev-008","query":"How do I assert that code emits a warning?","relevant_pages":[154,155],"required_terms":["warning","pytest.warns"],"notes":"Warning assertions."}
+{"query_id":"dev-009","query":"How do I select tests by keyword expression?","relevant_pages":[25,26],"required_terms":["-k","keyword","select"],"notes":"Test selection with keyword expressions."}
+{"query_id":"dev-010","query":"How do I use conftest.py to share fixtures?","relevant_pages":[113,114],"required_terms":["conftest.py","fixture","share"],"notes":"Shared fixture discovery."}
