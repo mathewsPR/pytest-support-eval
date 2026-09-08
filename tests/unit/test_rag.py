@@ -67,8 +67,11 @@ def make_chunk() -> dict[str, object]:
         "source_page_number": 42,
         "source_page_start": 42,
         "source_page_end": 42,
-        "text": "pytest explains failing assert statements with assertion introspection.",
-    }
+        "text": (
+            "pytest explains failing assert statements with assertion "
+            "introspection."
+        ),
+}
 
 
 def test_answer_report_builds_messages_and_calls_client(tmp_path: Path) -> None:
