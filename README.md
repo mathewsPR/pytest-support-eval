@@ -58,3 +58,34 @@ The project uses Python 3.11 in a local virtual environment.
 py -3.11 -m venv .venv
 source .venv/Scripts/activate
 python --version
+
+## Manual llama.cpp Smoke Test
+
+Start a local llama.cpp OpenAI-compatible server. This project has been smoke-tested with Phi-4 mini instruct on port `8081`:
+
+```bash
+cd /f/AI/2.llamacpp
+
+./llama-server.exe \
+  -m "/f/AI/2.llamacpp/models/_unpinned/microsoft_Phi-4-mini-instruct-Q4_K_M.gguf" \
+  --host 127.0.0.1 \
+  --port 8081 \
+  -c 4096
+```
+
+Confirm the server is reachable:
+
+```bash
+curl http://127.0.0.1:8081/v1/models
+```
+
+Run the support CLI against the fixed report fixtures:
+
+```bash
+python -m pytest_support.cli run-002 --base-url http://127.0.0.1:8081 --top-k 3 --timeout 120 --max-tokens 256
+python -m pytest_support.cli run-003 --base-url http://127.0.0.1:8081 --top-k 3 --timeout 120 --max-tokens 256
+```
+
+The normal CI suite does not start or require llama.cpp. Model-backed checks are manual for now.
+
+Known limitation: answers can inherit spacing artifacts from the extracted PDF corpus, and citation wording may be weaker than the structured citation metadata available in retrieved chunks.
