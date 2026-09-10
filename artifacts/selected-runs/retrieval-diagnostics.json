@@ -1,0 +1,392 @@
+{
+  "eval_data": "evals\\data\\development.jsonl",
+  "chunks": "corpus\\processed\\pytest-documentation\\chunks.jsonl",
+  "top_k": 3,
+  "item_count": 10,
+  "hit_count": 2,
+  "hit_rate": 0.2,
+  "most_common_retrieved_pages": [
+    [
+      77,
+      6
+    ],
+    [
+      472,
+      2
+    ],
+    [
+      65,
+      2
+    ],
+    [
+      511,
+      2
+    ],
+    [
+      345,
+      1
+    ],
+    [
+      69,
+      1
+    ],
+    [
+      498,
+      1
+    ],
+    [
+      14,
+      1
+    ],
+    [
+      184,
+      1
+    ],
+    [
+      123,
+      1
+    ]
+  ],
+  "missed_relevant_pages": [
+    [
+      63,
+      1
+    ],
+    [
+      48,
+      1
+    ],
+    [
+      493,
+      1
+    ],
+    [
+      112,
+      1
+    ],
+    [
+      121,
+      1
+    ],
+    [
+      189,
+      1
+    ],
+    [
+      190,
+      1
+    ],
+    [
+      149,
+      1
+    ],
+    [
+      150,
+      1
+    ],
+    [
+      154,
+      1
+    ]
+  ],
+  "rows": [
+    {
+      "query": "How do I use tmp_path to create temporary files in a test?",
+      "relevant_pages": [
+        63
+      ],
+      "retrieved_pages": [
+        77,
+        345,
+        472
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 77,
+          "score": 65.7991806273562,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 345,
+          "score": 54.075222755650685,
+          "preview": "pytest Documentation, Release 9.2\n\nparseconfigure(*args)\n             See Pytester.parseconfigure().\n\ngetitem(source, funcname='test_func')\n             See Pytester.getitem().\n\ngetitems(source)\n             See Pytester.getitems().\n\ngetmod"
+        },
+        {
+          "page": 472,
+          "score": 52.99526064955893,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n          b = 2\n>       assert A.a == b, \"A.a appears not to be b\"\nE       AssertionError: A.a appears not to be b\nE       assert 1 == 2\nE        +  where 1 = <class 'failure_de"
+        }
+      ]
+    },
+    {
+      "query": "How can monkeypatch change environment variables during a test?",
+      "relevant_pages": [
+        65,
+        69
+      ],
+      "retrieved_pages": [
+        65,
+        69,
+        65
+      ],
+      "hit": true,
+      "retrieved": [
+        {
+          "page": 65,
+          "score": 97.66458376903482,
+          "preview": "distributingtestsonthelocalmachineusingpytest-xdist,careistakentoautomaticallyconfigureabasetemp\ndirectoryforthesubprocessessuchthatalltemporarydatalandsbelowasingleper-testruntemporarydirectory.\n\n2.7  How to monkeypatch/mock modules and en"
+        },
+        {
+          "page": 69,
+          "score": 71.4270793551271,
+          "preview": "pytest Documentation, Release 9.2\n\nimport  functools\n\ndef test_partial(monkeypatch):\n       with monkeypatch.context()  as m:\n             m.setattr(functools, \"partial\", 3)\n             assert functools.partial == 3\n See#3290fordetails.\n\n2"
+        },
+        {
+          "page": 65,
+          "score": 62.131462316933614,
+          "preview": "setitem to patch the dictionary for the test.  monkeypatch.delitem can be used to remove\nitems.\n3. Modifying environment variables for a test e.g. to test program behavior if an environment variable is missing, or\ntosetmultiplevaluestoaknow"
+        }
+      ]
+    },
+    {
+      "query": "How do I parametrize a test function with multiple examples?",
+      "relevant_pages": [
+        48,
+        493
+      ],
+      "retrieved_pages": [
+        511,
+        77,
+        498
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 511,
+          "score": 79.9934033855642,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n@pytest.mark.skip(reason=None): skip the given test function with an optional reason.␣\n\n˓→Example: skip(reason=\"no way of currently testing this\") skips the test.\n\n@pytest.mark."
+        },
+        {
+          "page": 77,
+          "score": 66.78108466134836,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 498,
+          "score": 50.053126765448894,
+          "preview": "pytest Documentation, Release 9.2\n\nParametrizing test methods through per-class conﬁguration\nHere is an example pytest_generate_tests function implementing a parametrization scheme similar to Michael\nFoord’sunittestparametrizerbutinalotless"
+        }
+      ]
+    },
+    {
+      "query": "How do pytest fixtures share setup between tests?",
+      "relevant_pages": [
+        112,
+        121
+      ],
+      "retrieved_pages": [
+        14,
+        184,
+        123
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 14,
+          "score": 45.032607873603666,
+          "preview": "pytest Documentation, Release 9.2\n\npytest tests/test_mod.py::TestClass\n\nSpecifyingaspecifictestmethod:\n\npytest tests/test_mod.py::TestClass::test_method\n\nSpecifyingaspecificparametrizationofatest:\n\npytest tests/test_mod.py::test_func[x1,y2]"
+        },
+        {
+          "page": 184,
+          "score": 44.445209351936874,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-docker-db\n       last release: Mar20,2021, status: 5-Production/Stable, requires: pytest(>=3.1.1)\n       Aplugintousedockerdatabasesforpytests\npytest-docker-fixtures\n       last release: May07,2026,"
+        },
+        {
+          "page": 123,
+          "score": 42.78229735549249,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n     \"\"\"teardown  any  state  that  was  previously  setup  with  a  setup_module\n     method.\n     \"\"\"\n\nAsofpytest-3.0,themoduleparameterisoptional.\n\n2.19.2  Class level setup/"
+        }
+      ]
+    },
+    {
+      "query": "How do I skip a test or mark it xfail?",
+      "relevant_pages": [
+        511
+      ],
+      "retrieved_pages": [
+        511,
+        507,
+        97
+      ],
+      "hit": true,
+      "retrieved": [
+        {
+          "page": 511,
+          "score": 87.43699658774291,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n@pytest.mark.skip(reason=None): skip the given test function with an optional reason.␣\n\n˓→Example: skip(reason=\"no way of currently testing this\") skips the test.\n\n@pytest.mark."
+        },
+        {
+          "page": 507,
+          "score": 82.43950781020328,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\ncachedir: .pytest_cache\nrootdir: /home/sweet/project\ncollecting ... collected 4 items / 2 deselected / 2 selected\n\ntest_server.py::test_send_http PASSED                         "
+        },
+        {
+          "page": 97,
+          "score": 67.95993320994901,
+          "preview": "pytest Documentation, Release 9.2\n\npytestcountsandlists skipand xfail testsseparately. Detailedinformationaboutskipped/xfailedtestsisnotshownby\ndefaulttoavoidclutteringtheoutput. Youcanusethe -roptiontoseedetailscorrespondingtothe“short”let"
+        }
+      ]
+    },
+    {
+      "query": "How does pytest discover configuration from pytest.ini?",
+      "relevant_pages": [
+        189,
+        190
+      ],
+      "retrieved_pages": [
+        305,
+        181,
+        286
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 305,
+          "score": 72.82120128455026,
+          "preview": "pytest Documentation, Release 9.2\n\nFinding the rootdir\nHereisthealgorithmwhichfindstherootdirfromargs:\n    • If -cispassedinthecommand-line,usethatasconfigurationfile,anditsdirectoryasrootdir.\n    • Determinethecommonancestordirectoryforthe"
+        },
+        {
+          "page": 181,
+          "score": 72.65580152077221,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-dir-equalsisapytestpluginprovidinghelperstoassertdirectoriesequalityallowinggoldentesting\npytest-dirty\n       last release: Jun08,2025, status: 3-Alpha, requires: pytest>=8.2;extra==“dev”\n       Sta"
+        },
+        {
+          "page": 286,
+          "score": 67.70760495391275,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-testrail-ns\n       last release: Aug12,2022, status: N/A, requires: N/A\n       pytestpluginforcreatingTestRailrunsandaddingresults\npytest-testrail-reporter\n       last release: Sep10,2018, status: N"
+        }
+      ]
+    },
+    {
+      "query": "How can I capture stdout and stderr in pytest?",
+      "relevant_pages": [
+        149,
+        150
+      ],
+      "retrieved_pages": [
+        87,
+        77,
+        324
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 87,
+          "score": 77.68627777335486,
+          "preview": "pytest Documentation, Release 9.2\n\n• tee-sys capturing: Python writes to sys.stdout and sys.stderr will be captured, however the writes will\n      also be passed-through to the actual sys.stdout and sys.stderr. This allows output to be ‘liv"
+        },
+        {
+          "page": 77,
+          "score": 70.06282198055166,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 324,
+          "score": 59.62914641822361,
+          "preview": "pytest Documentation, Release 9.2\n\nfiltering(filter_)\n            Context manager that temporarily adds the given filter to the caplog’s handler() for the ‘with’ statement\n            block,andremovesthatfilterattheendoftheblock.\n          "
+        }
+      ]
+    },
+    {
+      "query": "How do I assert that code emits a warning?",
+      "relevant_pages": [
+        154,
+        155
+      ],
+      "retrieved_pages": [
+        472,
+        77,
+        93
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 472,
+          "score": 58.31721516659829,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n          b = 2\n>       assert A.a == b, \"A.a appears not to be b\"\nE       AssertionError: A.a appears not to be b\nE       assert 1 == 2\nE        +  where 1 = <class 'failure_de"
+        },
+        {
+          "page": 77,
+          "score": 51.6482372779054,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 93,
+          "score": 43.098014888854856,
+          "preview": "pytest Documentation, Release 9.2\n\nThiswillignoreallwarningsoftypeDeprecationWarningwherethestartofthemessagematchestheregularexpres-\nsion\".*U.*mode is deprecated\".\nSee @pytest.mark.filterwarningsand Controlling warningsformoreexamples.\n\nIN"
+        }
+      ]
+    },
+    {
+      "query": "How do I select tests by keyword expression?",
+      "relevant_pages": [
+        25,
+        26
+      ],
+      "retrieved_pages": [
+        77,
+        79,
+        13
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 77,
+          "score": 55.8197975789428,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 79,
+          "score": 39.69141670047612,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\ni = 17\n\n@pytest.mark.parametrize(\"i\", range(50))\n     def test_num(i):\n           if i in (17, 25):\n>           pytest.fail(\"bad luck\")\nE           Failed: bad luck\n\ntest_50.py"
+        },
+        {
+          "page": 13,
+          "score": 38.54539325426316,
+          "preview": "CHAPTER\n                                                                                                                   TWO\n\nHOW-TO GUIDES\n\n2.1  How to invoke pytest\n\nSHARE  See also\n\nComplete pytest command-line flags reference\n\nIngener"
+        }
+      ]
+    },
+    {
+      "query": "How do I use conftest.py to share fixtures?",
+      "relevant_pages": [
+        113,
+        114
+      ],
+      "retrieved_pages": [
+        77,
+        106,
+        473
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 77,
+          "score": 62.837393782030475,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 106,
+          "score": 56.1590902054662,
+          "preview": "pytest Documentation, Release 9.2\n\n4. by loading all plugins registered through installed third-party package  entry  points, unless the PYTEST_DIS-\n       ABLE_PLUGIN_AUTOLOADenvironmentvariableisset.\n   5. byloadingallpluginsspecifiedthro"
+        },
+        {
+          "page": 473,
+          "score": 52.61403844939207,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\nFAILED failure_demo.py::TestFailing::test_simple - assert 42 == 43\nFAILED failure_demo.py::TestFailing::test_simple_multiline - assert 42 == 54\nFAILED failure_demo.py::TestFaili"
+        }
+      ]
+    }
+  ]
+}

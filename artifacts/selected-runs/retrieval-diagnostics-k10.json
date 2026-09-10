@@ -1,0 +1,812 @@
+{
+  "eval_data": "evals\\data\\development.jsonl",
+  "chunks": "corpus\\processed\\pytest-documentation\\chunks.jsonl",
+  "top_k": 10,
+  "item_count": 10,
+  "hit_count": 3,
+  "hit_rate": 0.3,
+  "most_common_retrieved_pages": [
+    [
+      77,
+      7
+    ],
+    [
+      78,
+      6
+    ],
+    [
+      79,
+      6
+    ],
+    [
+      472,
+      3
+    ],
+    [
+      511,
+      3
+    ],
+    [
+      106,
+      3
+    ],
+    [
+      122,
+      3
+    ],
+    [
+      437,
+      3
+    ],
+    [
+      65,
+      2
+    ],
+    [
+      498,
+      2
+    ]
+  ],
+  "missed_relevant_pages": [
+    [
+      63,
+      1
+    ],
+    [
+      112,
+      1
+    ],
+    [
+      121,
+      1
+    ],
+    [
+      189,
+      1
+    ],
+    [
+      190,
+      1
+    ],
+    [
+      149,
+      1
+    ],
+    [
+      150,
+      1
+    ],
+    [
+      154,
+      1
+    ],
+    [
+      155,
+      1
+    ],
+    [
+      25,
+      1
+    ]
+  ],
+  "rows": [
+    {
+      "query": "How do I use tmp_path to create temporary files in a test?",
+      "relevant_pages": [
+        63
+      ],
+      "retrieved_pages": [
+        77,
+        345,
+        472,
+        511,
+        11,
+        78,
+        79,
+        121,
+        10,
+        106
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 77,
+          "score": 65.7991806273562,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 345,
+          "score": 54.075222755650685,
+          "preview": "pytest Documentation, Release 9.2\n\nparseconfigure(*args)\n             See Pytester.parseconfigure().\n\ngetitem(source, funcname='test_func')\n             See Pytester.getitem().\n\ngetitems(source)\n             See Pytester.getitems().\n\ngetmod"
+        },
+        {
+          "page": 472,
+          "score": 52.99526064955893,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n          b = 2\n>       assert A.a == b, \"A.a appears not to be b\"\nE       AssertionError: A.a appears not to be b\nE       assert 1 == 2\nE        +  where 1 = <class 'failure_de"
+        },
+        {
+          "page": 511,
+          "score": 48.719882347906506,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n@pytest.mark.skip(reason=None): skip the given test function with an optional reason.␣\n\n˓→Example: skip(reason=\"no way of currently testing this\") skips the test.\n\n@pytest.mark."
+        },
+        {
+          "page": 11,
+          "score": 47.87623112356008,
+          "preview": "pytest Documentation, Release 9.2\n\n$ pytest -q test_tmp_path.py\nF                                                                    [100%]\n================================= FAILURES =================================\n_______________________"
+        },
+        {
+          "page": 78,
+          "score": 46.745196352379935,
+          "preview": "pytest Documentation, Release 9.2\n\n$ pytest --lf\n=========================== test session starts ============================\nplatform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\nrootdir: /home/sweet/project\ncollected 2 items\nrun-last"
+        },
+        {
+          "page": 79,
+          "score": 46.729546580712814,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\ni = 17\n\n@pytest.mark.parametrize(\"i\", range(50))\n     def test_num(i):\n           if i in (17, 25):\n>           pytest.fail(\"bad luck\")\nE           Failed: bad luck\n\ntest_50.py"
+        },
+        {
+          "page": 121,
+          "score": 46.67277924479684,
+          "preview": "ssertionError: <conft...\n============================ 2 failed in 0.12s =============================\n\nThisdefaultpytesttracebackshowsthatthetwotestmethodssharethesameself.dbinstancewhichwasourintention\nwhenwritingtheclass-scopedfixturefunc"
+        },
+        {
+          "page": 10,
+          "score": 40.17190877217606,
+          "preview": "ue temporary directory for functional tests\n\npytestprovidesBuiltinfixtures/functionargumentstorequestarbitraryresources,likeauniquetemporarydirectory:\n\n#  content  of  test_tmp_path.py\ndef test_needsfiles(tmp_path):\n     print(tmp_path)\n   "
+        },
+        {
+          "page": 106,
+          "score": 39.851443165053695,
+          "preview": "pytest Documentation, Release 9.2\n\n4. by loading all plugins registered through installed third-party package  entry  points, unless the PYTEST_DIS-\n       ABLE_PLUGIN_AUTOLOADenvironmentvariableisset.\n   5. byloadingallpluginsspecifiedthro"
+        }
+      ]
+    },
+    {
+      "query": "How can monkeypatch change environment variables during a test?",
+      "relevant_pages": [
+        65,
+        69
+      ],
+      "retrieved_pages": [
+        65,
+        69,
+        65,
+        326,
+        70,
+        71,
+        66,
+        472,
+        165,
+        122
+      ],
+      "hit": true,
+      "retrieved": [
+        {
+          "page": 65,
+          "score": 97.66458376903482,
+          "preview": "distributingtestsonthelocalmachineusingpytest-xdist,careistakentoautomaticallyconfigureabasetemp\ndirectoryforthesubprocessessuchthatalltemporarydatalandsbelowasingleper-testruntemporarydirectory.\n\n2.7  How to monkeypatch/mock modules and en"
+        },
+        {
+          "page": 69,
+          "score": 71.4270793551271,
+          "preview": "pytest Documentation, Release 9.2\n\nimport  functools\n\ndef test_partial(monkeypatch):\n       with monkeypatch.context()  as m:\n             m.setattr(functools, \"partial\", 3)\n             assert functools.partial == 3\n See#3290fordetails.\n\n2"
+        },
+        {
+          "page": 65,
+          "score": 62.131462316933614,
+          "preview": "setitem to patch the dictionary for the test.  monkeypatch.delitem can be used to remove\nitems.\n3. Modifying environment variables for a test e.g. to test program behavior if an environment variable is missing, or\ntosetmultiplevaluestoaknow"
+        },
+        {
+          "page": 326,
+          "score": 61.7293938322574,
+          "preview": "otherautousefixture:\n\n@pytest.fixture(autouse=True)\n      def add_np(doctest_namespace):\n            doctest_namespace[\"np\"] = numpy\n\nFormoredetails: ‘doctest_namespace’ fixture.\n\nmonkeypatch\nTutorial: How to monkeypatch/mock modules and en"
+        },
+        {
+          "page": 70,
+          "score": 55.979782982439765,
+          "preview": "pytest Documentation, Release 9.2\n\n#  contents  of  our  test  file  e.g.  test_code.py\nimport  pytest\n\n@pytest.fixture\ndef mock_env_user(monkeypatch):\n     monkeypatch.setenv(\"USER\", \"TestingUser\")\n\n@pytest.fixture\ndef mock_env_missing(mon"
+        },
+        {
+          "page": 71,
+          "score": 54.23407689757166,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n     #  the  test  uses  the  monkeypatched  dictionary  settings\n     result = app.create_connection_string()\n     assert result == expected\n\nYoucanusethe monkeypatch.delitemto"
+        },
+        {
+          "page": 66,
+          "score": 46.008378548847034,
+          "preview": "pytest Documentation, Release 9.2\n\n2.7.1  Monkeypatching functions\nConsider a scenario where you are working with user directories. In the context of testing, you do not want your test\ntodependontherunninguser. monkeypatchcanbeusedtopatchfu"
+        },
+        {
+          "page": 472,
+          "score": 42.11010347845206,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n          b = 2\n>       assert A.a == b, \"A.a appears not to be b\"\nE       AssertionError: A.a appears not to be b\nE       assert 1 == 2\nE        +  where 1 = <class 'failure_de"
+        },
+        {
+          "page": 165,
+          "score": 41.212081264542576,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-celery-utils\n       last release: Jan28,2026, status: N/A, requires: pytest>=9.0.1\n       PytestpluginforinspectingCelerytaskqueuesinRedisduringtests\npytest-cfg-fetcher\n       last release: Feb26,20"
+        },
+        {
+          "page": 122,
+          "score": 35.16895051944965,
+          "preview": "pytest Documentation, Release 9.2\n\nisashortcutforusinga@pytest.mark.usefixtures(\"initdir\")markerontheclasslikeinthepreviousexample.\nRunningthistestmodule…:\n\n$ pytest -q test_unittest_cleandir.py\n.                                            "
+        }
+      ]
+    },
+    {
+      "query": "How do I parametrize a test function with multiple examples?",
+      "relevant_pages": [
+        48,
+        493
+      ],
+      "retrieved_pages": [
+        511,
+        77,
+        498,
+        508,
+        48,
+        492,
+        78,
+        79,
+        507,
+        493
+      ],
+      "hit": true,
+      "retrieved": [
+        {
+          "page": 511,
+          "score": 79.9934033855642,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n@pytest.mark.skip(reason=None): skip the given test function with an optional reason.␣\n\n˓→Example: skip(reason=\"no way of currently testing this\") skips the test.\n\n@pytest.mark."
+        },
+        {
+          "page": 77,
+          "score": 66.78108466134836,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 498,
+          "score": 50.053126765448894,
+          "preview": "pytest Documentation, Release 9.2\n\nParametrizing test methods through per-class conﬁguration\nHere is an example pytest_generate_tests function implementing a parametrization scheme similar to Michael\nFoord’sunittestparametrizerbutinalotless"
+        },
+        {
+          "page": 508,
+          "score": 49.04105411364868,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\n˓→values if argnames specifies only one name or a list of tuples of values if␣\n\n˓→argnames specifies multiple names. Example: @parametrize('arg1', [1,2]) would lead␣\n\n˓→to two "
+        },
+        {
+          "page": 48,
+          "score": 48.402972907219734,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\ndef test_b(b):\n     pass\n\nTheaboveshowshow idscanbeeitheralistofstringstouseorafunctionwhichwillbecalledwiththefixturevalue\nandthenhastoreturnastringtouse. Inthelattercaseifthef"
+        },
+        {
+          "page": 492,
+          "score": 48.13234961598238,
+          "preview": "pytest Documentation, Release 9.2\n\nDiﬀerent options for test IDs\npytest will build a string that is the test ID for each set of values in a parametrized test. These IDs can be used with\n-k to select specific cases to run, and they will also"
+        },
+        {
+          "page": 78,
+          "score": 47.92562478603851,
+          "preview": "pytest Documentation, Release 9.2\n\n$ pytest --lf\n=========================== test session starts ============================\nplatform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\nrootdir: /home/sweet/project\ncollected 2 items\nrun-last"
+        },
+        {
+          "page": 79,
+          "score": 45.85906652366049,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\ni = 17\n\n@pytest.mark.parametrize(\"i\", range(50))\n     def test_num(i):\n           if i in (17, 25):\n>           pytest.fail(\"bad luck\")\nE           Failed: bad luck\n\ntest_50.py"
+        },
+        {
+          "page": 507,
+          "score": 43.61026262652196,
+          "preview": "the given test function if␣\n\n˓→any of the conditions evaluate to True. Example: skipif(sys.platform == 'win32')␣\n\n˓→skips the test if we are on the win32 platform. See https://docs.pytest.org/en/\n\n˓→stable/reference/reference.html#pytest-ma"
+        },
+        {
+          "page": 493,
+          "score": 43.59009312381744,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n           ),\n     ],\n)\ndef test_timedistance_v3(a, b, expected):\n     diff = a - b\n     assert diff == expected\n\nIntest_timedistance_v0,weletpytestgeneratethetestIDs.\nIntest_ti"
+        }
+      ]
+    },
+    {
+      "query": "How do pytest fixtures share setup between tests?",
+      "relevant_pages": [
+        112,
+        121
+      ],
+      "retrieved_pages": [
+        14,
+        184,
+        123,
+        437,
+        122,
+        250,
+        199,
+        437,
+        300,
+        157
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 14,
+          "score": 45.032607873603666,
+          "preview": "pytest Documentation, Release 9.2\n\npytest tests/test_mod.py::TestClass\n\nSpecifyingaspecifictestmethod:\n\npytest tests/test_mod.py::TestClass::test_method\n\nSpecifyingaspecificparametrizationofatest:\n\npytest tests/test_mod.py::test_func[x1,y2]"
+        },
+        {
+          "page": 184,
+          "score": 44.445209351936874,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-docker-db\n       last release: Mar20,2021, status: 5-Production/Stable, requires: pytest(>=3.1.1)\n       Aplugintousedockerdatabasesforpytests\npytest-docker-fixtures\n       last release: May07,2026,"
+        },
+        {
+          "page": 123,
+          "score": 42.78229735549249,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n     \"\"\"teardown  any  state  that  was  previously  setup  with  a  setup_module\n     method.\n     \"\"\"\n\nAsofpytest-3.0,themoduleparameterisoptional.\n\n2.19.2  Class level setup/"
+        },
+        {
+          "page": 437,
+          "score": 40.38204885037561,
+          "preview": "E]\n                               Store internal tracing debug information in this log\n                               file. This file is opened with 'w' and truncated as\n                               a result, care advised. Default: pytest"
+        },
+        {
+          "page": 122,
+          "score": 40.045978571273366,
+          "preview": "pytest Documentation, Release 9.2\n\nisashortcutforusinga@pytest.mark.usefixtures(\"initdir\")markerontheclasslikeinthepreviousexample.\nRunningthistestmodule…:\n\n$ pytest -q test_unittest_cleandir.py\n.                                            "
+        },
+        {
+          "page": 250,
+          "score": 36.968306795483436,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-prairielearn-grader\n       last release: May21,2026, status: 3-Alpha, requires: pytest\n       ApytestpluginforautogradingPythoncode. DesignedforusewiththePrairieLearnplatform.\npytest-prefer-nested-d"
+        },
+        {
+          "page": 199,
+          "score": 36.932472168690836,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-fixture-ref\n       last release: Nov17,2022, status: 4-Beta, requires: N/A\n       Letsusersreferencefixtureswithoutnamematchingmagic.\npytest-fixture-remover\n       last release: Feb14,2024, status: "
+        },
+        {
+          "page": 437,
+          "score": 36.69972354051184,
+          "preview": "y          Only setup fixtures, do not execute tests\n  --setup-show          Show setup of fixtures while executing tests\n  --setup-plan          Show what fixtures and tests would be executed but\n                               don't execut"
+        },
+        {
+          "page": 300,
+          "score": 35.972083851952476,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-xml\n       last release: Nov14,2024, status: 4-Beta, requires: pytest>=8.0.0\n       CreatesimpleXMLresultsforparsing\npytest-xpara\n       last release: Aug07,2024, status: 3-Alpha, requires: pytest\n "
+        },
+        {
+          "page": 157,
+          "score": 35.90624893811268,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-aws-fixtures\n       last release: Nov11,2025, status: N/A, requires: pytest<10.0.0,>=8.0.0\n       AseriesoffixturestouseinintegrationtestsinvolvingactualAWSservices.\npytest-aws-fixtures-293984\n     "
+        }
+      ]
+    },
+    {
+      "query": "How do I skip a test or mark it xfail?",
+      "relevant_pages": [
+        511
+      ],
+      "retrieved_pages": [
+        511,
+        507,
+        97,
+        77,
+        102,
+        319,
+        100,
+        101,
+        508,
+        309
+      ],
+      "hit": true,
+      "retrieved": [
+        {
+          "page": 511,
+          "score": 87.43699658774291,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n@pytest.mark.skip(reason=None): skip the given test function with an optional reason.␣\n\n˓→Example: skip(reason=\"no way of currently testing this\") skips the test.\n\n@pytest.mark."
+        },
+        {
+          "page": 507,
+          "score": 82.43950781020328,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\ncachedir: .pytest_cache\nrootdir: /home/sweet/project\ncollecting ... collected 4 items / 2 deselected / 2 selected\n\ntest_server.py::test_send_http PASSED                         "
+        },
+        {
+          "page": 97,
+          "score": 67.95993320994901,
+          "preview": "pytest Documentation, Release 9.2\n\npytestcountsandlists skipand xfail testsseparately. Detailedinformationaboutskipped/xfailedtestsisnotshownby\ndefaulttoavoidclutteringtheoutput. Youcanusethe -roptiontoseedetailscorrespondingtothe“short”let"
+        },
+        {
+          "page": 77,
+          "score": 67.93962145177721,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 102,
+          "score": 64.00695923076123,
+          "preview": "pytest Documentation, Release 9.2\n\nRunningitwiththereport-on-xfailoptiongivesthisoutput:\n\n! pytest -rx xfail_demo.py\n=========================== test session starts ============================\nplatform linux -- Python 3.x.y, pytest-6.x.y, "
+        },
+        {
+          "page": 319,
+          "score": 60.718944953821754,
+          "preview": "pytest Documentation, Release 9.2\n\npytest.mark.skip(reason='unconditional skip')\n\nParameters\n                  reason(str)–Reasonwhythetestfunctionisbeingskipped.\n\npytest.mark.skipif\nTutorial: Skipping test functions\nSkipatestfunctionifacon"
+        },
+        {
+          "page": 100,
+          "score": 60.63011317207092,
+          "preview": "pytest Documentation, Release 9.2\n\nReference: pytest.mark.xfail\n\ncondition parameter\nIfatestisonlyexpectedtofailunderacertaincondition,youcanpassthatconditionasthefirstparameter:\n\n@pytest.mark.xfail(sys.platform == \"win32\", reason=\"bug in a"
+        },
+        {
+          "page": 101,
+          "score": 58.83381400650223,
+          "preview": "pytest Documentation, Release 9.2\n\nIgnoring xfail\nByspecifyingonthecommandline:\n\npytest --runxfail\n\nyoucanforcetherunningandreportingofanxfailmarkedtestasifitweren’tmarkedatall. Thisalsocauses pytest.\nxfail()toproducenoeffect.\n\nExamples\nHer"
+        },
+        {
+          "page": 508,
+          "score": 52.57793417816183,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\n˓→values if argnames specifies only one name or a list of tuples of values if␣\n\n˓→argnames specifies multiple names. Example: @parametrize('arg1', [1,2]) would lead␣\n\n˓→to two "
+        },
+        {
+          "page": 309,
+          "score": 47.22307594787992,
+          "preview": "lutetoleranceas\n      atimedelta:\n\n>>>  from  datetime  import datetime, timedelta\n      >>> dt1 = datetime(2024, 1, 1, 12, 0, 0)\n      >>> dt2 = datetime(2024, 1, 1, 12, 0, 0, 500000)\n      >>> dt1 == approx(dt2, abs=timedelta(seconds=1))\n"
+        }
+      ]
+    },
+    {
+      "query": "How does pytest discover configuration from pytest.ini?",
+      "relevant_pages": [
+        189,
+        190
+      ],
+      "retrieved_pages": [
+        305,
+        181,
+        286,
+        252,
+        227,
+        300,
+        149,
+        192,
+        224,
+        236
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 305,
+          "score": 72.82120128455026,
+          "preview": "pytest Documentation, Release 9.2\n\nFinding the rootdir\nHereisthealgorithmwhichfindstherootdirfromargs:\n    • If -cispassedinthecommand-line,usethatasconfigurationfile,anditsdirectoryasrootdir.\n    • Determinethecommonancestordirectoryforthe"
+        },
+        {
+          "page": 181,
+          "score": 72.65580152077221,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-dir-equalsisapytestpluginprovidinghelperstoassertdirectoriesequalityallowinggoldentesting\npytest-dirty\n       last release: Jun08,2025, status: 3-Alpha, requires: pytest>=8.2;extra==“dev”\n       Sta"
+        },
+        {
+          "page": 286,
+          "score": 67.70760495391275,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-testrail-ns\n       last release: Aug12,2022, status: N/A, requires: N/A\n       pytestpluginforcreatingTestRailrunsandaddingresults\npytest-testrail-reporter\n       last release: Sep10,2018, status: N"
+        },
+        {
+          "page": 252,
+          "score": 65.88967367030206,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-pudb-resurrected\n       last release: Mar12,2026, status: 3-Alpha, requires: pytest>=7.0\n       PytestPuDBdebuggerintegration\npytest-pulse-report\n       last release: May14,2026, status: N/A, requir"
+        },
+        {
+          "page": 227,
+          "score": 65.52348866507685,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-lsp\n       last release: Jun17,2026, status: 5-Production/Stable, requires: pytest>=8.0\n       Apytestpluginforend-to-endtestingoflanguageservers\npytest-lw-realtime-result\n       last release: Mar13"
+        },
+        {
+          "page": 300,
+          "score": 65.52348866507685,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-xml\n       last release: Nov14,2024, status: 4-Beta, requires: pytest>=8.0.0\n       CreatesimpleXMLresultsforparsing\npytest-xpara\n       last release: Aug07,2024, status: 3-Alpha, requires: pytest\n "
+        },
+        {
+          "page": 149,
+          "score": 63.33937237624096,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-allclose\n       last release: Jul30,2019, status: 5-Production/Stable, requires: pytest\n       PytestfixtureextendingNumpy’sallclosefunction\npytest-allure-adaptor\n       last release: Jan10,2018, st"
+        },
+        {
+          "page": 192,
+          "score": 63.33937237624096,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-eval\n       last release: Feb11,2026, status: 3-Alpha, requires: pytest>=7.0\n       LLMtestingforhumans.\npytest-evals\n       last release: Feb02,2025, status: N/A, requires: pytest>=7.0.0\n       Apy"
+        },
+        {
+          "page": 224,
+          "score": 63.33937237624096,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-live\n       last release: Mar08,2020, status: N/A, requires: pytest\n       Liveresultsforpytest\npytest-live-pause\n       last release: Jun10,2026, status: N/A, requires: pytest>=9.0.3\n       Pytestp"
+        },
+        {
+          "page": 236,
+          "score": 63.33937237624096,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-mypy-plugins-shim\n       last release: Feb14,2025, status: N/A, requires: pytest>=6.0.0\n       Substitutefor“pytest-mypy-plugins”forPythonimplementationswhicharen’tsupportedbymypy.\npytest-mypy-runne"
+        }
+      ]
+    },
+    {
+      "query": "How can I capture stdout and stderr in pytest?",
+      "relevant_pages": [
+        149,
+        150
+      ],
+      "retrieved_pages": [
+        87,
+        77,
+        324,
+        79,
+        78,
+        453,
+        250,
+        82,
+        435,
+        122
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 87,
+          "score": 77.68627777335486,
+          "preview": "pytest Documentation, Release 9.2\n\n• tee-sys capturing: Python writes to sys.stdout and sys.stderr will be captured, however the writes will\n      also be passed-through to the actual sys.stdout and sys.stderr. This allows output to be ‘liv"
+        },
+        {
+          "page": 77,
+          "score": 70.06282198055166,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 324,
+          "score": 59.62914641822361,
+          "preview": "pytest Documentation, Release 9.2\n\nfiltering(filter_)\n            Context manager that temporarily adds the given filter to the caplog’s handler() for the ‘with’ statement\n            block,andremovesthatfilterattheendoftheblock.\n          "
+        },
+        {
+          "page": 79,
+          "score": 52.29174555759329,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\ni = 17\n\n@pytest.mark.parametrize(\"i\", range(50))\n     def test_num(i):\n           if i in (17, 25):\n>           pytest.fail(\"bad luck\")\nE           Failed: bad luck\n\ntest_50.py"
+        },
+        {
+          "page": 78,
+          "score": 50.374044865007384,
+          "preview": "pytest Documentation, Release 9.2\n\n$ pytest --lf\n=========================== test session starts ============================\nplatform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\nrootdir: /home/sweet/project\ncollected 2 items\nrun-last"
+        },
+        {
+          "page": 453,
+          "score": 45.11998679563976,
+          "preview": "arent.\n\nQuarantine\nMarkLapierrediscussestheProsandConsofQuarantinedTestsinapostfrom2018.\n\nCI tools that rerun on failure\nAzurePipelines(theAzurecloudCI/CDtool,formerlyVisualStudioTeamServicesorVSTS)hasafeaturetoidentify\nflakytestsandrerunfa"
+        },
+        {
+          "page": 250,
+          "score": 40.88767153960731,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-prairielearn-grader\n       last release: May21,2026, status: 3-Alpha, requires: pytest\n       ApytestpluginforautogradingPythoncode. DesignedforusewiththePrairieLearnplatform.\npytest-prefer-nested-d"
+        },
+        {
+          "page": 82,
+          "score": 39.67883142420402,
+          "preview": "pytest Documentation, Release 9.2\n\nThis is recommended for invocations from Continuous Integration servers where isolation and correctness is more im-\nportantthanspeed.\n\n2.9.7  Stepwise\nAsanalternativeto --lf -x,especiallyforcaseswhereyouex"
+        },
+        {
+          "page": 435,
+          "score": 38.48832908238066,
+          "preview": "failing test. Implicitly enables --stepwise.\n  --sw-reset, --stepwise-reset\n                               Resets stepwise state, restarting the stepwise\n                               workflow. Implicitly enables --stepwise.\n\nReporting:\n  "
+        },
+        {
+          "page": 122,
+          "score": 38.313325748848726,
+          "preview": "pytest Documentation, Release 9.2\n\nisashortcutforusinga@pytest.mark.usefixtures(\"initdir\")markerontheclasslikeinthepreviousexample.\nRunningthistestmodule…:\n\n$ pytest -q test_unittest_cleandir.py\n.                                            "
+        }
+      ]
+    },
+    {
+      "query": "How do I assert that code emits a warning?",
+      "relevant_pages": [
+        154,
+        155
+      ],
+      "retrieved_pages": [
+        472,
+        77,
+        93,
+        241,
+        78,
+        79,
+        498,
+        29,
+        309,
+        492
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 472,
+          "score": 58.31721516659829,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n          b = 2\n>       assert A.a == b, \"A.a appears not to be b\"\nE       AssertionError: A.a appears not to be b\nE       assert 1 == 2\nE        +  where 1 = <class 'failure_de"
+        },
+        {
+          "page": 77,
+          "score": 51.6482372779054,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 93,
+          "score": 43.098014888854856,
+          "preview": "pytest Documentation, Release 9.2\n\nThiswillignoreallwarningsoftypeDeprecationWarningwherethestartofthemessagematchestheregularexpres-\nsion\".*U.*mode is deprecated\".\nSee @pytest.mark.filterwarningsand Controlling warningsformoreexamples.\n\nIN"
+        },
+        {
+          "page": 241,
+          "score": 35.91593980002084,
+          "preview": "pytest Documentation, Release 9.2\n\npytest-opentmi\n       last release: Feb09,2026, status: 5-Production/Stable, requires: pytest>=5.0\n       pytestpluginforpublishresultstoopentmi\npytest-operator\n       last release: Sep28,2022, status: N/A"
+        },
+        {
+          "page": 78,
+          "score": 34.39279609311316,
+          "preview": "pytest Documentation, Release 9.2\n\n$ pytest --lf\n=========================== test session starts ============================\nplatform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\nrootdir: /home/sweet/project\ncollected 2 items\nrun-last"
+        },
+        {
+          "page": 79,
+          "score": 34.39279609311316,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\ni = 17\n\n@pytest.mark.parametrize(\"i\", range(50))\n     def test_num(i):\n           if i in (17, 25):\n>           pytest.fail(\"bad luck\")\nE           Failed: bad luck\n\ntest_50.py"
+        },
+        {
+          "page": 498,
+          "score": 32.13235077329205,
+          "preview": "pytest Documentation, Release 9.2\n\nParametrizing test methods through per-class conﬁguration\nHere is an example pytest_generate_tests function implementing a parametrization scheme similar to Michael\nFoord’sunittestparametrizerbutinalotless"
+        },
+        {
+          "page": 29,
+          "score": 31.70065567644098,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n     #  Act\n     order.append(2)\n\n#  Assert\n     assert order == [\"a\", 2]\n\nEachtesthereisbeinggivenitsowncopyofthatlistobject,whichmeanstheorderfixtureisgettingexecutedtwice\n(th"
+        },
+        {
+          "page": 309,
+          "score": 31.227368895549326,
+          "preview": "lutetoleranceas\n      atimedelta:\n\n>>>  from  datetime  import datetime, timedelta\n      >>> dt1 = datetime(2024, 1, 1, 12, 0, 0)\n      >>> dt2 = datetime(2024, 1, 1, 12, 0, 0, 500000)\n      >>> dt1 == approx(dt2, abs=timedelta(seconds=1))\n"
+        },
+        {
+          "page": 492,
+          "score": 30.796003557644916,
+          "preview": "pytest Documentation, Release 9.2\n\nDiﬀerent options for test IDs\npytest will build a string that is the test ID for each set of values in a parametrized test. These IDs can be used with\n-k to select specific cases to run, and they will also"
+        }
+      ]
+    },
+    {
+      "query": "How do I select tests by keyword expression?",
+      "relevant_pages": [
+        25,
+        26
+      ],
+      "retrieved_pages": [
+        77,
+        79,
+        13,
+        434,
+        78,
+        518,
+        14,
+        437,
+        57,
+        455
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 77,
+          "score": 55.8197975789428,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 79,
+          "score": 39.69141670047612,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\ni = 17\n\n@pytest.mark.parametrize(\"i\", range(50))\n     def test_num(i):\n           if i in (17, 25):\n>           pytest.fail(\"bad luck\")\nE           Failed: bad luck\n\ntest_50.py"
+        },
+        {
+          "page": 13,
+          "score": 38.54539325426316,
+          "preview": "CHAPTER\n                                                                                                                   TWO\n\nHOW-TO GUIDES\n\n2.1  How to invoke pytest\n\nSHARE  See also\n\nComplete pytest command-line flags reference\n\nIngener"
+        },
+        {
+          "page": 434,
+          "score": 34.79190504935748,
+          "preview": "pytest Documentation, Release 9.2\n\nComplete Help Output\nAllthecommand-lineflagscanalsobeobtainedbyrunningpytest --help:\n\n$ pytest --help\nusage: pytest [options] [file_or_dir] [file_or_dir] [...]\n\npositional arguments:\n  file_or_dir\n\ngeneral"
+        },
+        {
+          "page": 78,
+          "score": 34.39279609311316,
+          "preview": "pytest Documentation, Release 9.2\n\n$ pytest --lf\n=========================== test session starts ============================\nplatform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\nrootdir: /home/sweet/project\ncollected 2 items\nrun-last"
+        },
+        {
+          "page": 518,
+          "score": 32.33314438852193,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n          |-- test_world_01.py\n          |-- test_world_02.py\n          '-- test_world_03.py\n\nNow if you invoke pytest with --ignore=tests/foobar/test_foobar_03.py --ignore=test"
+        },
+        {
+          "page": 14,
+          "score": 29.72418538036402,
+          "preview": "pytest Documentation, Release 9.2\n\npytest tests/test_mod.py::TestClass\n\nSpecifyingaspecifictestmethod:\n\npytest tests/test_mod.py::TestClass::test_method\n\nSpecifyingaspecificparametrizationofatest:\n\npytest tests/test_mod.py::test_func[x1,y2]"
+        },
+        {
+          "page": 437,
+          "score": 25.102327934917277,
+          "preview": "y          Only setup fixtures, do not execute tests\n  --setup-show          Show setup of fixtures while executing tests\n  --setup-plan          Show what fixtures and tests would be executed but\n                               don't execut"
+        },
+        {
+          "page": 57,
+          "score": 24.43581851386652,
+          "preview": "pytest Documentation, Release 9.2\n\nIt’seasytocreatecustommarkersortoapplymarkerstowholetestclassesormodules. Thosemarkerscanbeusedby\nplugins,andalsoarecommonlyusedto select testsonthecommand-linewiththe -moption.\nSee Working with custom mar"
+        },
+        {
+          "page": 455,
+          "score": 20.828755398203224,
+          "preview": "pytest Documentation, Release 9.2\n\n– pytestwillnotchangesys.pathatall.\n           – Test module names do not need to be unique – pytest will generate a unique name automatically based on\n              therootdir.\n       Disadvantages:\n     "
+        }
+      ]
+    },
+    {
+      "query": "How do I use conftest.py to share fixtures?",
+      "relevant_pages": [
+        113,
+        114
+      ],
+      "retrieved_pages": [
+        77,
+        106,
+        473,
+        78,
+        79,
+        473,
+        53,
+        456,
+        106,
+        129
+      ],
+      "hit": false,
+      "retrieved": [
+        {
+          "page": 77,
+          "score": 62.837393782030475,
+          "preview": "pytest Documentation, Release 9.2\n\nOtherpluginsmayaccessthe config.cacheobjecttoset/get json encodablevaluesbetweenpytestinvocations.\n\nINFO-CIRCLE  Note\n\nThispluginisenabledbydefault,butcanbedisabledifneeded: see Deactivating / unregisterin"
+        },
+        {
+          "page": 106,
+          "score": 56.1590902054662,
+          "preview": "pytest Documentation, Release 9.2\n\n4. by loading all plugins registered through installed third-party package  entry  points, unless the PYTEST_DIS-\n       ABLE_PLUGIN_AUTOLOADenvironmentvariableisset.\n   5. byloadingallpluginsspecifiedthro"
+        },
+        {
+          "page": 473,
+          "score": 52.61403844939207,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\nFAILED failure_demo.py::TestFailing::test_simple - assert 42 == 43\nFAILED failure_demo.py::TestFailing::test_simple_multiline - assert 42 == 54\nFAILED failure_demo.py::TestFaili"
+        },
+        {
+          "page": 78,
+          "score": 47.64492972464558,
+          "preview": "pytest Documentation, Release 9.2\n\n$ pytest --lf\n=========================== test session starts ============================\nplatform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\nrootdir: /home/sweet/project\ncollected 2 items\nrun-last"
+        },
+        {
+          "page": 79,
+          "score": 43.227551847468106,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\ni = 17\n\n@pytest.mark.parametrize(\"i\", range(50))\n     def test_num(i):\n           if i in (17, 25):\n>           pytest.fail(\"bad luck\")\nE           Failed: bad luck\n\ntest_50.py"
+        },
+        {
+          "page": 473,
+          "score": 42.0515664170647,
+          "preview": "ed: DID NOT ...\nFAILED failure_demo.py::TestRaises::test_raise - ValueError: demo error\nFAILED failure_demo.py::TestRaises::test_tupleerror - ValueError: not eno...\nFAILED failure_demo.py::TestRaises::test_reinterpret_fails_with_print_for_t"
+        },
+        {
+          "page": 53,
+          "score": 40.84157665856409,
+          "preview": "pytest Documentation, Release 9.2\n\npytestmark = pytest.mark.usefixtures(\"cleandir\")\n\nItisalsopossibletoputfixturesrequiredbyalltestsinyourprojectintoaconfigurationfile:\n\n#  content  of  pytest.toml\n[pytest]\nusefixtures = [\"cleandir\"]\n\nExcla"
+        },
+        {
+          "page": 456,
+          "score": 38.83404773478298,
+          "preview": "pytest Documentation, Release 9.2\n\n4.5.2  prepend and append import modes scenarios\nHere’s a list of scenarios when using prepend or append import modes where pytest needs to change sys.path in\nordertoimporttestmodulesorconftest.pyfiles,and"
+        },
+        {
+          "page": 106,
+          "score": 38.31083841521447,
+          "preview": "up(item):\n            #  called  for  running  each  test  in  'a'  directory\n            print(\"setting up\", item)\n\na/test_sub.py:\n      def test_sub():\n            pass\n\ntest_flat.py:\n      def test_flat():\n            pass\n\nHereishowyoum"
+        },
+        {
+          "page": 129,
+          "score": 35.81281651516841,
+          "preview": "pytest Documentation, Release 9.2\n\n(continuedfrompreviouspage)\n\nconftest.py\n           #  content  of  tests/conftest.py\n           import  pytest\n\n@pytest.fixture\n           def order():\n                return []\n\n@pytest.fixture\n         "
+        }
+      ]
+    }
+  ]
+}
