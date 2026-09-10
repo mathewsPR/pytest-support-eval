@@ -13,6 +13,30 @@ from pytest_support.corpus import load_chunk_records
 
 TOKEN_PATTERN = re.compile(r"[A-Za-z0-9_]+")
 
+QUERY_EXPANSIONS: dict[str, tuple[str, ...]] = {
+    "temporary": ("tmp_path", "tmpdir"),
+    "temp": ("tmp_path", "tmpdir"),
+    "files": ("file", "tmp_path"),
+    "directories": ("directory", "tmp_path"),
+    "stdout": ("capsys", "capfd", "capture", "captured"),
+    "stderr": ("capsys", "capfd", "capture", "captured"),
+    "capture": ("capsys", "capfd", "stdout", "stderr"),
+    "capturing": ("capsys", "capfd", "stdout", "stderr"),
+    "warning": ("warns", "pytest", "warns"),
+    "warnings": ("warns", "pytest", "warns"),
+    "emits": ("warns", "warning", "warnings"),
+    "keyword": ("k", "expression"),
+    "expression": ("k", "keyword"),
+    "configuration": ("config", "pytest_ini", "pytest.ini", "ini"),
+    "config": ("configuration", "pytest_ini", "pytest.ini", "ini"),
+    "ini": ("pytest_ini", "pytest.ini", "config"),
+    "sharing": ("shared", "fixtures", "conftest"),
+    "share": ("shared", "fixtures", "conftest"),
+    "setup": ("fixture", "fixtures", "conftest"),
+    "examples": ("parametrize", "parameterize", "parameters"),
+    "multiple": ("parametrize", "parameters"),
+}
+
 
 @dataclass(frozen=True)
 class SearchResult:
@@ -24,6 +48,15 @@ class SearchResult:
 
 def tokenize(text: str) -> list[str]:
     return [match.group(0).lower() for match in TOKEN_PATTERN.finditer(text)]
+
+
+def expand_query_terms(query_terms: list[str]) -> list[str]:
+    expanded_terms = list(query_terms)
+
+    for term in query_terms:
+        expanded_terms.extend(QUERY_EXPANSIONS.get(term, ()))
+
+    return expanded_terms
 
 
 def document_frequency(chunks: list[dict[str, Any]]) -> Counter[str]:
@@ -58,7 +91,7 @@ def _score_chunks(
     chunks: list[dict[str, Any]],
     query: str,
 ) -> list[SearchResult]:
-    query_terms = tokenize(query)
+    query_terms = expand_query_terms(tokenize(query))
     if not query_terms:
         return []
 

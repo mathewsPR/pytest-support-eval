@@ -34,3 +34,15 @@ Development-set comparison at `top_k=3`:
 - Page aggregation mode: `hit_rate@3 = 0.200`
 
 Page aggregation changed the retrieved pages but did not improve the current development hit rate. We are keeping it as an experimental mode because documentation citations are page-oriented, but we are not treating it as a quality improvement yet.
+
+## Query normalization retrieval experiment
+
+We added deterministic pytest-specific query expansion to reduce wording mismatch between user-style questions and documentation text.
+
+Development-set comparison at `top_k=3`:
+
+- Previous chunk retrieval: `hit_rate@3 = 0.200`
+- Query-normalized chunk retrieval: `hit_rate@3 = 0.300`
+- Query-normalized page aggregation: `hit_rate@3 = 0.300`
+
+This is the first measured retrieval improvement on the development set. The change remains deterministic and offline, so it is suitable for CI-covered retrieval behavior.
