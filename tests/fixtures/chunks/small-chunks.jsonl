@@ -1,0 +1,3 @@
+{"corpus_id":"pytest-documentation","chunk_id":"chunk-001","source_page_number":1,"source_page_start":1,"source_page_end":1,"text":"pytest assertion failures show expected and actual values. AssertionError assert 4 == 5 means the expected value does not match the actual value."}
+{"corpus_id":"pytest-documentation","chunk_id":"chunk-002","source_page_number":2,"source_page_start":2,"source_page_end":2,"text":"pytest fixtures provide reusable setup for tests. A missing fixture error means pytest could not find a fixture with that name."}
+{"corpus_id":"pytest-documentation","chunk_id":"chunk-003","source_page_number":3,"source_page_start":3,"source_page_end":3,"text":"pytest monkeypatch can change environment variables during a test using setenv."}
