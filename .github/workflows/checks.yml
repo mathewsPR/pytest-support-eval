@@ -1,74 +1,155 @@
 name: checks
 
 on:
-  pull_request:
   push:
-    branches:
-      - main
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: checks-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-defaults:
-  run:
-    shell: bash
-
 jobs:
-  quality:
-    name: python quality
+  checks:
+    name: Python checks
     runs-on: windows-latest
-    timeout-minutes: 10
 
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version:
-          - "3.11.9"
+    defaults:
+      run:
+        shell: bash
 
     steps:
-      - name: Check out repository
+      - name: Checkout
         uses: actions/checkout@v7
 
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
-          python-version: ${{ matrix.python-version }}
-          cache: pip
-          cache-dependency-path: |
-            pyproject.toml
-            requirements-dev.txt
+          python-version: "3.11.9"
+          cache: "pip"
 
-      - name: Show Python environment
+      - name: Install dependencies
         run: |
-          python --version
-          python -m pip --version
-
-      - name: Upgrade packaging tools
-        run: |
-          python -m pip install --upgrade pip setuptools wheel
-
-      - name: Install project
-        run: |
-          python -m pip install -r requirements-dev.txt
+          python -m pip install --upgrade pip
+          if [ -f requirements-dev.txt ]; then
+            python -m pip install -r requirements-dev.txt
+          fi
           python -m pip install -e ".[dev]"
 
-      - name: Ruff lint
-        run: |
-          python -m ruff check .
-
       - name: Ruff format check
-        run: |
-          python -m ruff format --check .
+        run: python -m ruff format --check .
 
-      - name: Import package
-        run: |
-          python -c "import pytest_support"
+      - name: Ruff lint
+        run: python -m ruff check .
 
-      - name: Run tests with coverage
+      - name: Validate JSON config files
         run: |
-          python -m pytest --cov=pytest_support --cov-report=term-missing --cov-fail-under=80
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          for path in sorted(Path("configs").glob("*.json")):
+              json.loads(path.read_text(encoding="utf-8"))
+              print(f"valid json: {path}")
+          PY
+
+      - name: Validate eval JSONL files
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          paths = [
+              Path("evals/data/development.jsonl"),
+              Path("evals/data/holdout.jsonl"),
+              Path("evals/data/relevance-pool.jsonl"),
+              Path("evals/annotations/calibration.jsonl"),
+              Path("evals/annotations/judge-validation.jsonl"),
+          ]
+
+          for path in paths:
+              if not path.exists():
+                  raise SystemExit(f"missing JSONL file: {path}")
+
+              for line_number, line in enumerate(
+                  path.read_text(encoding="utf-8").splitlines(),
+                  start=1,
+              ):
+                  if not line.strip():
+                      continue
+                  json.loads(line)
+
+              print(f"valid jsonl: {path}")
+          PY
+
+      - name: Check required project structure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          required_paths = [
+              "configs/application.json",
+              "configs/model-a.json",
+              "configs/model-b.json",
+              "configs/judge.json",
+              "configs/release-gates.json",
+              "src/pytest_support/tracing.py",
+              "evals/data/development.jsonl",
+              "evals/data/holdout.jsonl",
+              "evals/data/relevance-pool.jsonl",
+              "evals/data/label-guide.md",
+              "evals/annotations/calibration.jsonl",
+              "evals/annotations/judge-validation.jsonl",
+              "evals/metrics/retrieval.py",
+              "evals/metrics/agent.py",
+              "evals/metrics/guardrail.py",
+              "evals/metrics/statistics.py",
+              "evals/harness/task.yaml",
+              "evals/harness/scoring.py",
+              "evals/promptfoo/config.yaml",
+              "evals/promptfoo/provider.py",
+              "evals/promptfoo/assertions.py",
+              "evals/judge.py",
+              "evals/ragas_runner.py",
+              "evals/budget.py",
+              "evals/runner.py",
+              "evals/controlled_faults.py",
+              "evals/proxies.py",
+              "scripts/extract_corpus.py",
+              "scripts/summarize_runs.py",
+              "artifacts/selected-runs/retrieval-development-baseline.json",
+              "reports/decisions.md",
+              "reports/judge-validation.md",
+              "reports/model-comparison.md",
+              "reports/proxy-study.md",
+              "reports/limitations.md",
+              "reports/demo-script.md",
+          ]
+
+          missing = [path for path in required_paths if not Path(path).exists()]
+
+          if missing:
+              for path in missing:
+                  print(f"missing: {path}")
+              raise SystemExit("required project structure is incomplete")
+
+          print("required project structure exists")
+          PY
+
+      - name: Run unit and eval tests
+        run: python -m pytest
+
+      - name: Run coverage gate
+        run: python -m pytest --cov=pytest_support --cov-report=term-missing --cov-fail-under=80
+
+      - name: Summarize saved eval runs
+        run: python scripts/summarize_runs.py
+
+      - name: Run retrieval eval if corpus chunks are available
+        run: |
+          if [ -f corpus/processed/pytest-documentation/chunks.jsonl ]; then
+            python evals/runner.py \
+              --top-k 3 \
+              --output artifacts/selected-runs/ci-retrieval-development.json
+          else
+            echo "Corpus chunks not committed; skipping retrieval eval runner."
+          fi
