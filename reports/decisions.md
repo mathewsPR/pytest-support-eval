@@ -16,3 +16,10 @@ Baseline run:
 Definition: a query is counted as a hit when at least one retrieved source page matches at least one labeled relevant page.
 
 Interpretation: this is a starting baseline, not a release-quality retrieval score. The current retriever is lexical and exact-token based, so it misses queries where the user wording differs from the documentation wording. The result gives us a concrete baseline before retrieval improvements.
+## Relevance audit
+
+We added `evals/harness/relevance_audit.py` to inspect development-set labels against the processed corpus and current retrieval results.
+
+The audit report is saved at `artifacts/selected-runs/relevance-audit-development.md`.
+
+This step is required before retrieval tuning because the current baseline has low hit rate, and we need to distinguish ranking failures from label/page/corpus extraction problems.
