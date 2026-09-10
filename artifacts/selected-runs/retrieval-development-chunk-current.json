@@ -1,0 +1,245 @@
+{
+  "eval_data": "evals\\data\\development.jsonl",
+  "chunks": "corpus\\processed\\pytest-documentation\\chunks.jsonl",
+  "top_k": 3,
+  "retrieval_mode": "chunk",
+  "commit": "46a488d3880099881be7e7bc8088fbf301f29429",
+  "item_count": 10,
+  "hit_count": 2,
+  "hit_rate": 0.2,
+  "misses": [
+    {
+      "query": "How do I use tmp_path to create temporary files in a test?",
+      "relevant_pages": [
+        63
+      ],
+      "retrieved_pages": [
+        77,
+        345,
+        472
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do I parametrize a test function with multiple examples?",
+      "relevant_pages": [
+        48,
+        493
+      ],
+      "retrieved_pages": [
+        511,
+        77,
+        498
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do pytest fixtures share setup between tests?",
+      "relevant_pages": [
+        112,
+        121
+      ],
+      "retrieved_pages": [
+        14,
+        184,
+        123
+      ],
+      "hit": false
+    },
+    {
+      "query": "How does pytest discover configuration from pytest.ini?",
+      "relevant_pages": [
+        189,
+        190
+      ],
+      "retrieved_pages": [
+        305,
+        181,
+        286
+      ],
+      "hit": false
+    },
+    {
+      "query": "How can I capture stdout and stderr in pytest?",
+      "relevant_pages": [
+        149,
+        150
+      ],
+      "retrieved_pages": [
+        87,
+        77,
+        324
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do I assert that code emits a warning?",
+      "relevant_pages": [
+        154,
+        155
+      ],
+      "retrieved_pages": [
+        472,
+        77,
+        93
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do I select tests by keyword expression?",
+      "relevant_pages": [
+        25,
+        26
+      ],
+      "retrieved_pages": [
+        77,
+        79,
+        13
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do I use conftest.py to share fixtures?",
+      "relevant_pages": [
+        113,
+        114
+      ],
+      "retrieved_pages": [
+        77,
+        106,
+        473
+      ],
+      "hit": false
+    }
+  ],
+  "results": [
+    {
+      "query": "How do I use tmp_path to create temporary files in a test?",
+      "relevant_pages": [
+        63
+      ],
+      "retrieved_pages": [
+        77,
+        345,
+        472
+      ],
+      "hit": false
+    },
+    {
+      "query": "How can monkeypatch change environment variables during a test?",
+      "relevant_pages": [
+        65,
+        69
+      ],
+      "retrieved_pages": [
+        65,
+        69,
+        65
+      ],
+      "hit": true
+    },
+    {
+      "query": "How do I parametrize a test function with multiple examples?",
+      "relevant_pages": [
+        48,
+        493
+      ],
+      "retrieved_pages": [
+        511,
+        77,
+        498
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do pytest fixtures share setup between tests?",
+      "relevant_pages": [
+        112,
+        121
+      ],
+      "retrieved_pages": [
+        14,
+        184,
+        123
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do I skip a test or mark it xfail?",
+      "relevant_pages": [
+        511
+      ],
+      "retrieved_pages": [
+        511,
+        507,
+        97
+      ],
+      "hit": true
+    },
+    {
+      "query": "How does pytest discover configuration from pytest.ini?",
+      "relevant_pages": [
+        189,
+        190
+      ],
+      "retrieved_pages": [
+        305,
+        181,
+        286
+      ],
+      "hit": false
+    },
+    {
+      "query": "How can I capture stdout and stderr in pytest?",
+      "relevant_pages": [
+        149,
+        150
+      ],
+      "retrieved_pages": [
+        87,
+        77,
+        324
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do I assert that code emits a warning?",
+      "relevant_pages": [
+        154,
+        155
+      ],
+      "retrieved_pages": [
+        472,
+        77,
+        93
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do I select tests by keyword expression?",
+      "relevant_pages": [
+        25,
+        26
+      ],
+      "retrieved_pages": [
+        77,
+        79,
+        13
+      ],
+      "hit": false
+    },
+    {
+      "query": "How do I use conftest.py to share fixtures?",
+      "relevant_pages": [
+        113,
+        114
+      ],
+      "retrieved_pages": [
+        77,
+        106,
+        473
+      ],
+      "hit": false
+    }
+  ]
+}

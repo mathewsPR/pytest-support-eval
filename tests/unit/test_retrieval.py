@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from pytest_support.retrieval import search_chunks, tokenize
+from pytest_support.retrieval import search_chunks, search_pages, tokenize
 
 
 def make_chunk(
@@ -72,3 +72,29 @@ def test_search_returns_empty_list_for_empty_query() -> None:
 def test_search_rejects_invalid_top_k() -> None:
     with pytest.raises(ValueError, match="top_k"):
         search_chunks([], "fixture", top_k=0)
+
+
+def test_search_pages_aggregates_chunk_scores_by_page() -> None:
+    chunks = [
+        make_chunk("pytest-documentation-p0001-c01", 1, "fixture setup"),
+        make_chunk("pytest-documentation-p0001-c02", 1, "fixture sharing"),
+        make_chunk("pytest-documentation-p0002-c01", 2, "fixture"),
+    ]
+
+    results = search_pages(chunks, "fixture setup sharing", top_k=2)
+
+    assert [result.source_page_number for result in results] == [1, 2]
+    assert results[0].chunk_id == "pytest-documentation-p0001-c02"
+    assert results[0].score > results[1].score
+
+
+def test_search_pages_returns_one_result_per_page() -> None:
+    chunks = [
+        make_chunk("pytest-documentation-p0001-c01", 1, "fixture setup"),
+        make_chunk("pytest-documentation-p0001-c02", 1, "fixture setup"),
+        make_chunk("pytest-documentation-p0002-c01", 2, "fixture setup"),
+    ]
+
+    results = search_pages(chunks, "fixture", top_k=5)
+
+    assert [result.source_page_number for result in results] == [1, 2]

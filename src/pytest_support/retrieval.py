@@ -54,15 +54,10 @@ def score_chunk(
     return score
 
 
-def search_chunks(
+def _score_chunks(
     chunks: list[dict[str, Any]],
     query: str,
-    *,
-    top_k: int = 5,
 ) -> list[SearchResult]:
-    if top_k < 1:
-        raise ValueError("top_k must be at least 1")
-
     query_terms = tokenize(query)
     if not query_terms:
         return []
@@ -93,7 +88,67 @@ def search_chunks(
             )
         )
 
+    return results
+
+
+def search_chunks(
+    chunks: list[dict[str, Any]],
+    query: str,
+    *,
+    top_k: int = 5,
+) -> list[SearchResult]:
+    if top_k < 1:
+        raise ValueError("top_k must be at least 1")
+
+    results = _score_chunks(chunks, query)
+
     return sorted(results, key=lambda result: (-result.score, result.chunk_id))[:top_k]
+
+
+def search_pages(
+    chunks: list[dict[str, Any]],
+    query: str,
+    *,
+    top_k: int = 5,
+) -> list[SearchResult]:
+    if top_k < 1:
+        raise ValueError("top_k must be at least 1")
+
+    scored_chunks = _score_chunks(chunks, query)
+    if not scored_chunks:
+        return []
+
+    page_scores: dict[int, float] = {}
+    page_representatives: dict[int, SearchResult] = {}
+
+    for result in scored_chunks:
+        page = result.source_page_number
+        page_scores[page] = page_scores.get(page, 0.0) + result.score
+
+        representative = page_representatives.get(page)
+        if representative is None or (
+            result.score,
+            result.chunk_id,
+        ) > (
+            representative.score,
+            representative.chunk_id,
+        ):
+            page_representatives[page] = result
+
+    aggregated_results = [
+        SearchResult(
+            chunk_id=representative.chunk_id,
+            source_page_number=page,
+            score=page_scores[page],
+            text=representative.text,
+        )
+        for page, representative in page_representatives.items()
+    ]
+
+    return sorted(
+        aggregated_results,
+        key=lambda result: (-result.score, result.source_page_number, result.chunk_id),
+    )[:top_k]
 
 
 def search_chunk_file(
@@ -103,3 +158,12 @@ def search_chunk_file(
     top_k: int = 5,
 ) -> list[SearchResult]:
     return search_chunks(load_chunk_records(chunks_path), query, top_k=top_k)
+
+
+def search_page_file(
+    chunks_path: Path,
+    query: str,
+    *,
+    top_k: int = 5,
+) -> list[SearchResult]:
+    return search_pages(load_chunk_records(chunks_path), query, top_k=top_k)
