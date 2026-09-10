@@ -1,0 +1,7 @@
+{
+  "minimum_unit_test_coverage": 80,
+  "retrieval_hit_rate_at_3_target": null,
+  "judge_kappa_target": 0.7,
+  "requires_model_server_in_ci": false,
+  "notes": "Release gates are documented targets. CI remains offline and deterministic."
+}

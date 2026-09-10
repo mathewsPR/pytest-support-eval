@@ -1,0 +1,9 @@
+{
+  "name": "local-phi-4-mini",
+  "provider": "llama.cpp",
+  "base_url": "http://127.0.0.1:8081",
+  "model": "local-model",
+  "timeout_seconds": 120,
+  "max_tokens": 512,
+  "notes": "Local llama.cpp model used for smoke testing. Kept out of CI."
+}

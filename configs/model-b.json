@@ -1,0 +1,9 @@
+{
+  "name": "comparison-model-placeholder",
+  "provider": "manual",
+  "base_url": null,
+  "model": null,
+  "timeout_seconds": 120,
+  "max_tokens": 512,
+  "notes": "Reserved for a future comparison model. Not used by CI."
+}

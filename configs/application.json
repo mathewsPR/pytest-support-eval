@@ -1,0 +1,8 @@
+{
+  "application": "pytest-support-eval",
+  "corpus_id": "pytest-documentation",
+  "default_report_id": "run-003",
+  "default_top_k": 3,
+  "default_chunks_path": "corpus/processed/pytest-documentation/chunks.jsonl",
+  "default_reports_dir": "fixtures/reports"
+}
