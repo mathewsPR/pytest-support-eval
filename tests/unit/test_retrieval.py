@@ -2,7 +2,12 @@ from __future__ import annotations
 
 import pytest
 
-from pytest_support.retrieval import search_chunks, search_pages, tokenize
+from pytest_support.retrieval import (
+    expand_query_terms,
+    search_chunks,
+    search_pages,
+    tokenize,
+)
 
 
 def make_chunk(
@@ -98,3 +103,30 @@ def test_search_pages_returns_one_result_per_page() -> None:
     results = search_pages(chunks, "fixture", top_k=5)
 
     assert [result.source_page_number for result in results] == [1, 2]
+
+
+def test_expand_query_terms_adds_pytest_specific_terms() -> None:
+    terms = expand_query_terms(["temporary", "files"])
+
+    assert "temporary" in terms
+    assert "files" in terms
+    assert "tmp_path" in terms
+
+
+def test_query_expansion_improves_tmp_path_retrieval() -> None:
+    chunks = [
+        make_chunk(
+            "pytest-documentation-p0001-c01",
+            1,
+            "general pytest documentation",
+        ),
+        make_chunk(
+            "pytest-documentation-p0002-c01",
+            2,
+            "tmp_path creates a temporary directory for a test",
+        ),
+    ]
+
+    results = search_chunks(chunks, "temporary files", top_k=1)
+
+    assert results[0].source_page_number == 2
