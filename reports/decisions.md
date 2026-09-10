@@ -23,3 +23,14 @@ We added `evals/harness/relevance_audit.py` to inspect development-set labels ag
 The audit report is saved at `artifacts/selected-runs/relevance-audit-development.md`.
 
 This step is required before retrieval tuning because the current baseline has low hit rate, and we need to distinguish ranking failures from label/page/corpus extraction problems.
+
+## Page aggregation retrieval experiment
+
+We added page-level retrieval aggregation as an explicit retrieval mode. The original chunk mode remains available and remains the default.
+
+Development-set comparison at `top_k=3`:
+
+- Chunk mode: `hit_rate@3 = 0.200`
+- Page aggregation mode: `hit_rate@3 = 0.200`
+
+Page aggregation changed the retrieved pages but did not improve the current development hit rate. We are keeping it as an experimental mode because documentation citations are page-oriented, but we are not treating it as a quality improvement yet.

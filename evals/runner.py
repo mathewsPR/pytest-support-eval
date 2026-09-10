@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from pytest_support.evals.retrieval import load_retrieval_eval_data
-from pytest_support.retrieval import search_chunk_file
+from pytest_support.retrieval import search_chunk_file, search_page_file
 
 DEFAULT_EVAL_DATA = Path("evals/data/development.jsonl")
 DEFAULT_CHUNKS = Path("corpus/processed/pytest-documentation/chunks.jsonl")
@@ -28,6 +28,7 @@ class RetrievalRun:
     eval_data: str
     chunks: str
     top_k: int
+    retrieval_mode: str
     commit: str | None
     item_count: int
     hit_count: int
@@ -124,8 +125,13 @@ def run_retrieval_eval(
     eval_data: Path,
     chunks: Path,
     top_k: int,
+    retrieval_mode: str = "chunk",
 ) -> RetrievalRun:
+    if retrieval_mode not in {"chunk", "page"}:
+        raise ValueError("retrieval_mode must be 'chunk' or 'page'")
+
     items = load_retrieval_eval_data(eval_data)
+    search = search_page_file if retrieval_mode == "page" else search_chunk_file
 
     query_runs: list[QueryRun] = []
 
@@ -133,7 +139,7 @@ def run_retrieval_eval(
         query = _query_text(item)
         relevant_pages = _relevant_pages(item)
 
-        search_results = search_chunk_file(
+        search_results = search(
             chunks,
             query,
             top_k=top_k,
@@ -157,6 +163,7 @@ def run_retrieval_eval(
         eval_data=str(eval_data),
         chunks=str(chunks),
         top_k=top_k,
+        retrieval_mode=retrieval_mode,
         commit=_git_commit(),
         item_count=len(query_runs),
         hit_count=hit_count,
@@ -178,35 +185,17 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Run retrieval evaluation against a labeled dataset."
     )
+    parser.add_argument("--eval-data", type=Path, default=DEFAULT_EVAL_DATA)
+    parser.add_argument("--chunks", type=Path, default=DEFAULT_CHUNKS)
+    parser.add_argument("--top-k", type=int, default=3)
     parser.add_argument(
-        "--eval-data",
-        type=Path,
-        default=DEFAULT_EVAL_DATA,
-        help="Path to retrieval eval JSONL data.",
+        "--retrieval-mode",
+        choices=["chunk", "page"],
+        default="chunk",
+        help="Retrieval scoring mode.",
     )
-    parser.add_argument(
-        "--chunks",
-        type=Path,
-        default=DEFAULT_CHUNKS,
-        help="Path to corpus chunks JSONL file.",
-    )
-    parser.add_argument(
-        "--top-k",
-        type=int,
-        default=3,
-        help="Number of chunks to retrieve per query.",
-    )
-    parser.add_argument(
-        "--output",
-        type=Path,
-        default=DEFAULT_OUTPUT,
-        help="Where to save the JSON baseline result.",
-    )
-    parser.add_argument(
-        "--json",
-        action="store_true",
-        help="Print the full JSON result to stdout.",
-    )
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--json", action="store_true")
 
     args = parser.parse_args()
 
@@ -223,6 +212,7 @@ def main() -> int:
         eval_data=args.eval_data,
         chunks=args.chunks,
         top_k=args.top_k,
+        retrieval_mode=args.retrieval_mode,
     )
 
     write_json(args.output, run)
@@ -233,6 +223,7 @@ def main() -> int:
         print(f"eval_data: {run.eval_data}")
         print(f"chunks: {run.chunks}")
         print(f"top_k: {run.top_k}")
+        print(f"retrieval_mode: {run.retrieval_mode}")
         print(f"commit: {run.commit}")
         print(f"items: {run.item_count}")
         print(f"hits: {run.hit_count}")
