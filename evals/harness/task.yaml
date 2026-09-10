@@ -1,0 +1,7 @@
+name: pytest-support-eval
+description: Evaluate local RAG support for pytest failure reports.
+inputs:
+  reports_dir: fixtures/reports
+  chunks_path: corpus/processed/pytest-documentation/chunks.jsonl
+outputs:
+  selected_runs_dir: artifacts/selected-runs
